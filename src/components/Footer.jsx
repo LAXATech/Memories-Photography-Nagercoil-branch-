@@ -1,6 +1,6 @@
 import React from 'react';
 import { BRAND } from '../data/photographyData';
-import BrandLogo from './BrandLogo';
+import ExactBrandLogo from './ExactBrandLogo';
 import { MessageCircle, Phone, ArrowUp } from 'lucide-react';
 import InstagramIcon from './InstagramIcon';
 
@@ -12,11 +12,13 @@ export default function Footer({ onNavClick }) {
   return (
     <footer className="bg-dark-950 border-t border-white/10 pt-16 pb-12 text-sand-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 pb-12 border-b border-white/5 text-left">
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <BrandLogo />
-            <p className="text-xs font-light text-sand-300/80 max-w-sm leading-relaxed">
+            <div onClick={() => onNavClick('home')} className="cursor-pointer">
+              <ExactBrandLogo />
+            </div>
+            <p className="text-xs font-light text-sand-300/80 max-w-sm leading-relaxed pt-1">
               Preserving sacred vows, joyous family laughter, and timeless celebrations with editorial finesse and intimate South Indian warmth.
             </p>
             <div className="pt-2 flex items-center gap-3">

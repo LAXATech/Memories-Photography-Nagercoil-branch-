@@ -4,17 +4,17 @@ import { FEATURED_STORIES } from '../data/photographyData';
 
 export default function ExactFeaturedStories({ onViewAllStories, onSelectStory }) {
   return (
-    <section className="w-full bg-[#FAF8F3] text-[#1c1d1a] py-16 sm:py-20 px-6 sm:px-10 lg:px-14">
+    <section className="w-full bg-[#FAF8F3] text-[#1c1d1a] py-14 sm:py-20 px-4 sm:px-10 lg:px-14">
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header Row */}
-        <div className="flex items-center justify-between mb-8 sm:mb-10">
-          <h2 className="text-3xl sm:text-4xl font-editorial font-normal text-[#1a1b18] tracking-tight">
+        <div className="flex flex-row items-center justify-between gap-2 mb-8 sm:mb-10">
+          <h2 className="text-2xl sm:text-4xl font-editorial font-normal text-[#1a1b18] tracking-tight">
             Featured Stories
           </h2>
 
           <button
             onClick={onViewAllStories}
-            className="group inline-flex items-center gap-2 text-xs font-sans text-[#4a4d46] hover:text-black tracking-wide transition-colors"
+            className="group inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-sans text-[#4a4d46] hover:text-black tracking-wide transition-colors flex-shrink-0"
           >
             <span>View All Stories</span>
             <span className="text-sm transition-transform group-hover:translate-x-1">→</span>

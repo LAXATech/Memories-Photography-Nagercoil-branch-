@@ -1,5 +1,6 @@
 import React from 'react';
 import ExactBrandLogo from './ExactBrandLogo';
+import ExactHeader from './ExactHeader';
 
 export default function ExactPackagesPage({
   onNavClick,
@@ -58,42 +59,12 @@ export default function ExactPackagesPage({
     <div className="w-full bg-[#FAF8F3] min-h-screen text-[#1c1d1a]">
       {/* 1. TOP HEADER & BANNER (DARK SECTION MATCHING REFERENCE IMAGE) */}
       <section className="relative w-full bg-[#0b0e0c] text-sand-50 pb-16 sm:pb-20">
-        {/* Top Header / Navigation Bar */}
-        <header className="relative z-20 w-full pt-6 pb-4 px-6 sm:px-10 lg:px-14">
-          <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-            {/* Logo on Left */}
-            <div onClick={() => onNavClick('home')}>
-              <ExactBrandLogo />
-            </div>
-
-            {/* Center Navigation Links */}
-            <nav className="hidden md:flex items-center space-x-7 lg:space-x-9">
-              {navLinks.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => onNavClick(item.id)}
-                  className={`text-[13px] tracking-wide font-sans transition-colors ${
-                    item.id === 'packages'
-                      ? 'text-white font-medium border-b border-white pb-0.5'
-                      : 'text-sand-200/90 hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-
-            {/* Check Availability CTA Button on Right */}
-            <div>
-              <button
-                onClick={() => onOpenBooking()}
-                className="px-5 py-2 rounded-lg border border-white/40 bg-black/20 hover:bg-white/10 hover:border-white text-sand-100 text-[12px] font-sans tracking-wide transition-all duration-200 shadow-sm"
-              >
-                Check Availability
-              </button>
-            </div>
-          </div>
-        </header>
+        {/* Top Header / Navigation Bar with Mobile Drawer */}
+        <ExactHeader
+          activeTab="packages"
+          onNavClick={onNavClick}
+          onOpenBooking={onOpenBooking}
+        />
 
         {/* Header Title Area matching Reference Image */}
         <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 pt-12 sm:pt-16">
@@ -111,12 +82,12 @@ export default function ExactPackagesPage({
       </section>
 
       {/* 2. PACKAGES CARDS LIST (WARM CREAM SECTION MATCHING REFERENCE IMAGE) */}
-      <section className="w-full bg-[#FAF8F3] py-14 sm:py-16 px-6 sm:px-10 lg:px-14">
+      <section className="w-full bg-[#FAF8F3] py-12 sm:py-16 px-4 sm:px-10 lg:px-14">
         <div className="max-w-[760px] mx-auto space-y-6 sm:space-y-8">
           {packagesList.map((pkg) => (
             <div
               key={pkg.id}
-              className="bg-white rounded-2xl border border-[#e5e0d3] p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row justify-between gap-6 items-stretch"
+              className="bg-white rounded-2xl border border-[#e5e0d3] p-5 sm:p-8 shadow-sm flex flex-col sm:flex-row justify-between gap-5 sm:gap-6 items-stretch"
             >
               {/* Left Side: Title, Price, Bullets, Enquire Now Button */}
               <div className="flex-1 flex flex-col justify-between text-left space-y-5">
@@ -144,15 +115,15 @@ export default function ExactPackagesPage({
                 <div className="pt-2">
                   <button
                     onClick={() => onOpenBooking(pkg)}
-                    className="px-6 py-2.5 rounded-lg bg-[#141715] hover:bg-black text-white text-[12px] font-sans tracking-wide transition-all duration-200 shadow-sm"
+                    className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-[#141715] hover:bg-black text-white text-[12px] font-sans tracking-wide transition-all duration-200 shadow-sm text-center"
                   >
                     Enquire Now
                   </button>
                 </div>
               </div>
 
-              {/* Right Side: Vertical Rectangular Image */}
-              <div className="w-full sm:w-[190px] md:w-[210px] aspect-[9/14] sm:aspect-auto rounded-xl overflow-hidden bg-[#e6e2d8] flex-shrink-0">
+              {/* Right Side: Responsive Image (horizontal on phone, vertical on desktop) */}
+              <div className="w-full sm:w-[190px] md:w-[210px] aspect-[16/10] sm:aspect-auto rounded-xl overflow-hidden bg-[#e6e2d8] flex-shrink-0">
                 <img
                   src={pkg.image}
                   alt={pkg.alt}

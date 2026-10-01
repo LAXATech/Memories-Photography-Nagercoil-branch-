@@ -17,24 +17,27 @@ export default function ExactWhatWeCapture({ onSelectCategory }) {
   ];
 
   return (
-    <section className="w-full bg-[#0c0f0d] text-sand-50 py-16 sm:py-20 px-6 sm:px-10 lg:px-14 border-t border-white/5">
+    <section className="w-full bg-[#0c0f0d] text-sand-50 py-14 sm:py-20 px-4 sm:px-10 lg:px-14 border-t border-white/5">
       <div className="max-w-[1400px] mx-auto">
         {/* Left Aligned Heading matching reference image */}
-        <div className="text-left mb-12 sm:mb-14">
-          <h2 className="text-3xl sm:text-4xl font-editorial font-light text-sand-50 tracking-tight">
+        <div className="text-left mb-10 sm:mb-14">
+          <h2 className="text-2xl sm:text-4xl font-editorial font-light text-sand-50 tracking-tight">
             What We Capture
           </h2>
         </div>
 
         {/* 5 Columns with delicate vertical divider borders matching reference image */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-white/10 border-t border-b border-white/10 py-4 sm:py-6">
-          {items.map((item) => {
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-white/10 border-t border-b border-white/10 py-3 sm:py-6">
+          {items.map((item, idx) => {
             const Icon = item.icon;
+            const isLastOnMobile = idx === items.length - 1;
             return (
               <button
                 key={item.id}
                 onClick={() => onSelectCategory(item.id)}
-                className="group flex flex-col items-center justify-center py-6 sm:py-8 px-4 hover:bg-white/[0.02] transition-colors"
+                className={`group flex flex-col items-center justify-center py-6 sm:py-8 px-3 sm:px-4 hover:bg-white/[0.02] transition-colors ${
+                  isLastOnMobile ? 'col-span-2 sm:col-span-1' : ''
+                }`}
               >
                 {/* Custom Line-Art Icon matching exact illustration in image */}
                 <div className="w-12 h-12 flex items-center justify-center text-sand-200/90 group-hover:text-gold transition-colors duration-300 mb-3.5 group-hover:scale-105 transform">

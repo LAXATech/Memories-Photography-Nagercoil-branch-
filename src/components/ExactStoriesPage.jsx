@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import ExactBrandLogo from './ExactBrandLogo';
+import ExactHeader from './ExactHeader';
 
 export default function ExactStoriesPage({
   onNavClick,
@@ -228,42 +229,12 @@ export default function ExactStoriesPage({
           <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e0c] via-transparent to-[#0b0e0c]/60" />
         </div>
 
-        {/* Top Header / Navigation Bar */}
-        <header className="relative z-20 w-full pt-6 pb-4 px-6 sm:px-10 lg:px-14">
-          <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-            {/* Logo on Left */}
-            <div onClick={() => onNavClick('home')}>
-              <ExactBrandLogo />
-            </div>
-
-            {/* Center Navigation Links */}
-            <nav className="hidden md:flex items-center space-x-7 lg:space-x-9">
-              {navLinks.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => onNavClick(item.id)}
-                  className={`text-[13px] tracking-wide font-sans transition-colors ${
-                    item.id === 'stories'
-                      ? 'text-white font-medium border-b border-white pb-0.5'
-                      : 'text-sand-200/90 hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-
-            {/* Check Availability CTA Button on Right */}
-            <div>
-              <button
-                onClick={onOpenBooking}
-                className="px-5 py-2 rounded-lg border border-white/40 bg-black/20 hover:bg-white/10 hover:border-white text-sand-100 text-[12px] font-sans tracking-wide transition-all duration-200 shadow-sm"
-              >
-                Check Availability
-              </button>
-            </div>
-          </div>
-        </header>
+        {/* Top Header / Navigation Bar with Mobile Drawer */}
+        <ExactHeader
+          activeTab="stories"
+          onNavClick={onNavClick}
+          onOpenBooking={onOpenBooking}
+        />
 
         {/* Hero Title Area matching Reference Image */}
         <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 py-16 sm:py-20 my-auto">
